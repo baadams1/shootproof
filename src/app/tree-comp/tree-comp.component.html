@@ -1,0 +1,23 @@
+<div class="nodeContainer">
+  <div class="parentNode" *ngFor="let parent of relationshipMap">
+    <img
+      src="{{ parent.thumbnail.href }}"
+      alt="{{ parent.thumbnail.description }}"
+      title="{{ parent.thumbnail.description }}"
+    />
+    {{ parent.name }}
+    <div class="arrow-up" (click)="toggleCollapse()"></div>
+  </div>
+  <div *ngIf="isCollapsed">
+    <div *ngFor="let parent of relationshipMap">
+      <div class="children" *ngFor="let children of parent.children">
+        <img
+          src="{{ children.thumbnail.href }}"
+          alt="{{ children.thumbnail.description }}"
+          title="{{ children.thumbnail.description }}"
+        />
+        {{ children.name }}
+      </div>
+    </div>
+  </div>
+</div>
